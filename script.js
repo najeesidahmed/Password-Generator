@@ -125,7 +125,13 @@ var specialCharacters = [
   
   // Function to generate password with user input
   function generatePassword() {
-  
+    let l = getPasswordOptions()[0];
+    let charOptions = getPasswordOptions()[1];
+    let pass = "";
+    for (i=0; i < l; i++){
+        pass = pass + getRandom(charOptions);
+    }
+    return pass;
   }
   
   // Get references to the #generate element
