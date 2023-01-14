@@ -91,16 +91,20 @@ var specialCharacters = [
   // Function to prompt user for password options
   
   function getPasswordOptions() {
+    // empty array to hold character options 
     let emptyArr = [];
+    // prompt user for length of password, and validate minumum and maximum
     let length = parseInt(prompt("Number of characters (10 - 64):  "));
     if (length < 10 || length > 64){
       length = prompt("Please enter a number between 10 and 64: ");
     }
+    // prompt user for character type with confirm method 
     let upperCase = confirm("Include uppercase characters?");
     let lowerCase = confirm("Include lowercase characters?");
     let specialCharacter = confirm("Include special characters?");
     let numeric = confirm("Include numeric characters?");
-  
+    
+    // add character type arrays to empty array based on user choice 
     if (upperCase){
       emptyArr = emptyArr.concat(upperCasedCharacters);
     }
@@ -126,8 +130,11 @@ var specialCharacters = [
   
   // Function to generate password with user input
   function generatePassword() {
+    // get length and character options array from get password options function
     let {length, emptyArr} = getPasswordOptions()
+    // set password as empty
     let pass = "";
+    // add characters to password at random up to desired length 
     for (i=0; i < length; i++){
         pass = pass + getRandom(emptyArr);
     }
