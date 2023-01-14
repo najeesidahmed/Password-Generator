@@ -89,9 +89,10 @@ var specialCharacters = [
   ];
   
   // Function to prompt user for password options
+  
   function getPasswordOptions() {
     let emptyArr = [];
-    var length = parseInt(prompt("Number of characters (10 - 64):  "));
+    let length = parseInt(prompt("Number of characters (10 - 64):  "));
     if (length < 10 || length > 64){
       length = prompt("Please enter a number between 10 and 64: ");
     }
@@ -100,21 +101,21 @@ var specialCharacters = [
     let specialCharacter = prompt("Include special characters? Enter yes or no: ").toLowerCase();
     let numeric = prompt("Include numeric characters? Enter yes or no: ").toLowerCase();
   
-    if (upperCase == "yes"){
+    if (upperCase === "yes"){
       emptyArr = emptyArr.concat(upperCasedCharacters);
     }
-    if (lowerCase == "yes"){
+    
+    if (lowerCase === "yes"){
       emptyArr = emptyArr.concat(lowerCasedCharacters);
     }
-    if (specialCharacter == "yes"){
+    if (specialCharacter === "yes"){
       emptyArr = emptyArr.concat(specialCharacters);
     }
-    if (numeric == "yes"){
+    if (numeric === "yes"){
       emptyArr = emptyArr.concat(numericCharacters);
     }
-  
-    return [length, emptyArr];
     
+    return {length, emptyArr};
   }
   
   // Function for getting a random element from an array
@@ -125,11 +126,10 @@ var specialCharacters = [
   
   // Function to generate password with user input
   function generatePassword() {
-    let l = getPasswordOptions()[0];
-    let charOptions = getPasswordOptions()[1];
+    let {length, emptyArr} = getPasswordOptions()
     let pass = "";
-    for (i=0; i < l; i++){
-        pass = pass + getRandom(charOptions);
+    for (i=0; i < length; i++){
+        pass = pass + getRandom(emptyArr);
     }
     return pass;
   }
