@@ -96,22 +96,22 @@ var specialCharacters = [
     if (length < 10 || length > 64){
       length = prompt("Please enter a number between 10 and 64: ");
     }
-    let upperCase = prompt("Include uppercase characters? Enter yes or no: ").toLowerCase();
-    let lowerCase = prompt("Include lowercase characters? Enter yes or no: ").toLowerCase();
-    let specialCharacter = prompt("Include special characters? Enter yes or no: ").toLowerCase();
-    let numeric = prompt("Include numeric characters? Enter yes or no: ").toLowerCase();
+    let upperCase = confirm("Include uppercase characters?");
+    let lowerCase = confirm("Include lowercase characters?");
+    let specialCharacter = confirm("Include special characters?");
+    let numeric = confirm("Include numeric characters?");
   
-    if (upperCase === "yes"){
+    if (upperCase){
       emptyArr = emptyArr.concat(upperCasedCharacters);
     }
     
-    if (lowerCase === "yes"){
+    if (lowerCase){
       emptyArr = emptyArr.concat(lowerCasedCharacters);
     }
-    if (specialCharacter === "yes"){
+    if (specialCharacter){
       emptyArr = emptyArr.concat(specialCharacters);
     }
-    if (numeric === "yes"){
+    if (numeric){
       emptyArr = emptyArr.concat(numericCharacters);
     }
     
